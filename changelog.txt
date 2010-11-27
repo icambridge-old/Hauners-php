@@ -1,0 +1,23 @@
+Change Log
+-----------
+
+1.0
+-> Modified : Whole script, rewrote in PHP
+
+0.4
+-> Added : Array of dicts for the mysql database back ups to back up multiple databases at once.
+-> Modified : Cleaned up the ftp upload function call and removed the declaring of unnecassary variables.
+-> Modified : Removed importing os lib twice.
+-> Added : Toogle ablitiy to back up dir.
+-> Added : Toogle ability to use TLS encyption with SMTP
+-> Added : Ability to define SMTP Port
+-> Added : SCP support
+-> Added : Toogle ability to have a date specific filename or defined
+-> Added : ABility to define the sender email address.
+
+0.3
+-> Added    : Tooglable feature to back up mysql databases.
+-> Modified : Cleaned up tarball.
+
+0.2
+-> Added : Tooglable feature to send backup tgz to with email report as attachment
