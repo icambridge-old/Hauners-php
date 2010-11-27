@@ -12,6 +12,8 @@
 	 * @version 1.0
 	 */
 	 
+	define('ROOT_DIR'. dirname(__FILE__));
+
 	$shortOps = 'c';
 	
 	$longOpts = array();
@@ -74,6 +76,32 @@
         exit;
     }
     
+    if ( !is_readable(ROOT_DIR."/etc/config.php") ){
+    	echo "Fatal Error".PHP_EOL;
+    	echo "Unable to read configuration file".PHP_EOL;
+    	echo "Please check your permissions on ".ROOT_DIR."/etc/config.php".PHP_EOL;
+    	exit;
+    }
+	
+    require_once ROOT_DIR.'/etc/config.php';
+    require_once ROOT_DIR.'/lib/Huaner/Core.php';
     
+    if ( $generalSettings['sample'] === true ){
+    	echo "Fatal Error".PHP_EOL;
+    	echo "Configuration is sample configuration.".PHP_EOL;
+    	echo "Please edit the configuration file".PHP_EOL;
+    	exit;
+    } 
     
+    // prepare configuration.
+    // TODO neaten up
+    $config = array();
+    $config['general'] = $generalSettings;
+    $config['aws'] = $awsSettings;
+    $config['ftp'] = $ftpSettings;
+    $config['email'] = $mailSettings;
+    $config['sql'] = $sqlSettings;
+    $config['scp'] = $scpSettings;
     
+    HuanersCore::setConfig($config);
+    HuanersCore::handleOptions($options);

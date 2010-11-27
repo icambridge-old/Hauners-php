@@ -51,8 +51,7 @@ $generalSettings['dir'] = array();
 // All - Backs up everything 
 // WordPress - Finds the SQL details automatically and copies the database and the wp-content folder as they are custom stuff
 // SQL - Grabs only the SQL dumps.
-// FSComplete - Grabs only the filesystem
-// FSSingle - Grabs the file system only but puts them into seperate tarballs.
+// Filesystem - Grabs only the filesystem
 $generalSettings['type'] = '';
 // Simple token replacement on this
 // %%TIME%% - unixtime_stamp
@@ -66,3 +65,5 @@ $generalSettings['ftp'] = true;
 $generalSettings['s3'] = true;
 // If we should upload via scp.
 $generalSettings['scp'] = true;
+// Delete this
+$generalSettings['sample'] = true;
