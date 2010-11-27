@@ -74,5 +74,6 @@
         exit;
     }
     
-    var_dump($options);
+    
+    
     
