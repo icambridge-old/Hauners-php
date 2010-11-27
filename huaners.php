@@ -12,7 +12,7 @@
 	 * @version 1.0
 	 */
 	 
-	define('ROOT_DIR'. dirname(__FILE__));
+	define('ROOT_DIR', dirname(__FILE__));
 
 	$shortOps = 'c';
 	
@@ -104,4 +104,4 @@
     $config['scp'] = $scpSettings;
     
     HuanersCore::setConfig($config);
-    HuanersCore::handleOptions($options);
+  //  HuanersCore::handleOptions($options);

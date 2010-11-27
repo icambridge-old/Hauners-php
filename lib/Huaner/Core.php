@@ -120,4 +120,62 @@ class HuanersCore {
 		
 	}
 	
+	/**
+	 * Handles assigning to over ride the general configuration.
+	 * 
+	 * @param unknown_type $options
+	 */
+	
+	public static function handleOptions($options){
+		
+		if ( empty($options) ){
+			// no options so do nothing!
+			return true;
+		}
+		// AWS config
+		if (  array_key_exists( 'accesskey' , $options ) 
+		   && array_key_exists( 'secretcode' , $options)
+		   && array_key_exists( 'bucket' , $options ) ){
+		   	
+		   self::$config['aws'][] = array(
+		   								'access_key' => $options['accesskey'],
+		   								'secret_key' => $options['secretkey'],
+		   								'bucket_name' => $options['bucket']
+		   								);	
+		   	
+		}
+		
+		// SQL Config
+		if (  array_key_exists( 'sqluser' , $options ) 
+		   && array_key_exists( 'sqlpass' , $options)
+		   && array_key_exists( 'sqlhost' , $options )
+		   && array_key_exists( 'sqldb' , $options )
+		   && array_key_exists( 'sqltype' , $options ) ){
+		   	
+		   	$port = ( array_key_exists( 'sqlport' , $options ) ) ? $options['sqlport'] : 3306;
+		   	
+			self::$config['sql'][] = array('username' =>  $options['sqluser'],
+					   'password' => $options['sqlpass'],  
+					   'dbname' => $options['sqldb'], 
+					   'hostname' => $options['sqlhost'],
+					   'port' => $port); 
+			
+		}
+		
+		
+		if (  array_key_exists( 'scpuser' , $options ) 
+		   && array_key_exists( 'scphost' , $options ) ) {
+			
+		}
+		if ( array_key_exists() ) {
+			
+		}
+		if ( array_key_exists() ) {
+			
+		}
+	}
+	
+	
+	
+	
 }
