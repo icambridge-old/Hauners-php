@@ -166,12 +166,38 @@ class HuanersCore {
 		if (  array_key_exists( 'scpuser' , $options ) 
 		   && array_key_exists( 'scphost' , $options ) ) {
 			
-		}
-		if ( array_key_exists() ) {
+			$idFile = ( array_key_exists( 'scpidfile' , $options ) ) ? $options['scpidfile'] : false;
+			self::$config['scp'][] = array('username' => $options['scpuser'],
+										   'server' => $options['scphost'],
+										   'id_file' => $idFile);
 			
 		}
-		if ( array_key_exists() ) {
-			
+		if (  array_key_exists( 'ftpuser' , $options ) 
+		   && array_key_exists( 'ftppass' , $options ) 
+		   && array_key_exists( 'ftphost' , $options )  ) {
+			$port = (array_key_exists('ftpport',$options)) ? $options['ftpport'] : 21;
+			self::$config['ftp'][] = array('username' => $options['ftpuser'],
+										   'password' => $options['ftppass'],
+										   'hostname' => $options['ftphost'],
+										   'port' => $port);
+		}
+		if ( array_key_exists('emailto',$options) ) {
+			self::$config['general']['emailto'][] = $options['emailto'];
+		}
+		
+		if (  array_key_exists('smtpuser',$options) 
+		   && array_key_exists('smtppass',$options)
+		   && array_key_exists('smtphost',$options) ){
+			$port = (array_key_exists('smtpport',$options)) ? $options['smtpport'] : 25;
+			$ssl = (array_key_exists('smtpssl',$options)) ? $options['smtpssl'] : false;
+			$attach = (array_key_exists('smtpattach',$options)) ? $options['smtpattach'] : false;
+			self::$config['mail'][] = array(
+										'username' => $options['smtpuser'],
+										'password' => $options['smtppass'],
+										'hostname' => $options['smtphost'],
+										'port' => $port,
+										'ssl' => $ssl,
+										'attach' => $attach);
 		}
 	}
 	
