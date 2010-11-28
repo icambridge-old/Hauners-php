@@ -19,6 +19,11 @@ class HuanersCore {
 	 */
 	
 	private static $config;
+	/**
+	 * Contains the directories that are to be backed up.
+	 * @var array
+	 */
+	protected $dirs = array();
 	
 	
 	/**
@@ -201,7 +206,11 @@ class HuanersCore {
 		}
 	}
 	
+	public function compress(){
 	
+		
+	
+	}
 	
 	
 }
