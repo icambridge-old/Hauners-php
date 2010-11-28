@@ -12,6 +12,25 @@ class HuanerWordpress extends HuanersCore {
 			$this->dirs = $general['dir'];
 		}
 		
+		
+		
+		
 	}
+	
+	protected function _getConfig(){
+	
+		foreach ( $this->dirs as $dir ) {
+			
+			if ( file_exists($dir) ) {
+				if ( !is_readable($dir.'/wp-config.php') ){
+					
+				}
+			}
+			
+		}
+		
+	
+	}
+	
 	
 }
