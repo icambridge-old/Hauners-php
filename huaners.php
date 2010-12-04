@@ -1,15 +1,15 @@
 #!/usr/bin/php
 <?php
 	/**
-	 * Script to back up MySQL and directories to various
-	 * places using various methods such as FTP, SCP, 
-	 * E-Mail and AWS.
+	 * Script to back up MySQL and directories to file 
+	 * dump or AWS S3.
 	 *  
 	 * @author Iain Cambridge
 	 * @license http://backie.org/copyright/bsd-license/ BSD License
 	 * @package Huaners
 	 * @copyright Iain Cambridge All rights reserved 2010 (c)
 	 * @version 1.0
+	 * @TODO Improve! (Add CloudFiles)
 	 */
 	 
 	define('ROOT_DIR', dirname(__FILE__));
@@ -24,19 +24,6 @@
 	define('AWS_SECRET', '');
 	define('AWS_BUCKET', '');
 	define('AWS_BACKUP', true);
-	// FTP
-	define('FTP_USERNAME', '');
-	define('FTP_PASSWORD', '');
-	define('FTP_HOSTNAME', '');
-	define('FTP_PORT', '');
-	define('FTP_BACKUP', false);
-	// SMTP
-	define('SMTP_USERNAME', '');
-	define('SMTP_PASSWORD', '');
-	define('SMTP_HOSTNAME', '');
-	define('SMTP_PORT', '');
-	define('EMAIL_REPORT', true);
-	define('ATTACH_BACKUP', true);
 	
 	// Set stuff that need set :~)
 	date_default_timezone_set('America/Los_Angeles');
@@ -83,7 +70,7 @@
 				exit;
 			}
 		}
-		
+	
 	} else {
 		define("TRANSFER",false);
 	}
@@ -194,7 +181,7 @@
 		
 		qprint("Archive Uploaded to S3");
 	}
-	
+		
 	/**
 	 * Fetches the SQL details for WordPress
 	 * from wp-config.php.
