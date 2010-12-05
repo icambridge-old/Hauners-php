@@ -30,7 +30,7 @@
 	ini_set("display_errors",1);
 	
 	$shortOpts = "wtqd:";
-	$longOpts = array("help","wordpress","dir:","transfer");
+	$longOpts = array("help","wordpress","dir:","transfer","quiet");
 	
 	$options  = getopt($shortOpts, $longOpts);
 	
