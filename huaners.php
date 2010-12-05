@@ -23,7 +23,6 @@
 	define('AWS_ACCESS', '');
 	define('AWS_SECRET', '');
 	define('AWS_BUCKET', '');
-	define('AWS_BACKUP', true);
 	
 	// Set stuff that need set :~)
 	date_default_timezone_set('America/Los_Angeles');
@@ -56,21 +55,12 @@
 		
 		define("TRANSFER",true);
 		// Check dependicies
-		if ( AWS_BACKUP === true ){
-			if ( !is_readable(ROOT_DIR."/lib/awssdk/sdk.class.php") ){
-				print "AWS PHP SDK not found, please download and put in ".ROOT_DIR."/lib/awssdk/sdk.class.php".PHP_EOL;
-				exit;
-			} 			
-			require_once ROOT_DIR."/lib/awssdk/sdk.class.php";
-		}
-		
-		if ( FTP_BACKUP === true ){
-			if ( !extenstion_loaded("ftp") ) {
-				print "PHP Doesn't have ftp enabled".PHP_EOL;
-				exit;
-			}
-		}
-	
+		if ( !is_readable(ROOT_DIR."/lib/awssdk/sdk.class.php") ){
+			print "AWS PHP SDK not found, please download and put in ".ROOT_DIR."/lib/awssdk/sdk.class.php".PHP_EOL;
+			exit;
+		} 			
+		require_once ROOT_DIR."/lib/awssdk/sdk.class.php";
+			
 	} else {
 		define("TRANSFER",false);
 	}
@@ -159,11 +149,7 @@
 	 * @param unknown_type $archiveFile
 	 */
 	function uploadAws($archiveFile){
-
-		if ( !AWS_BACKUP ){
-			return;
-		}
-		
+	
 		qprint("Starting S3 Upload");
 		
 		$s3 = new AmazonS3(AWS_ACCESS,AWS_SECRET);
